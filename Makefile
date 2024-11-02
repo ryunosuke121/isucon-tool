@@ -7,6 +7,7 @@ include env.sh
 USER:=isucon
 BIN_NAME:=isucondition
 BUILD_DIR:=/home/isucon/webapp/go
+CMD_MAINGO:=main.go
 SERVICE_NAME:=$(BIN_NAME).go.service
 
 DB_PATH:=/etc/mysql
@@ -120,7 +121,7 @@ deploy-envsh:
 .PHONY: build
 build:
 	cd $(BUILD_DIR); \
-	go build -o $(BIN_NAME)
+	go build -o $(BIN_NAME) $(CMD_MAINGO)
 
 .PHONY: restart
 restart:
