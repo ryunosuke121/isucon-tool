@@ -21,7 +21,7 @@ DB_SLOW_LOG:=/var/log/mysql/mariadb-slow.log
 
 # サーバーの環境構築　ツールのインストール、gitまわりのセットアップ
 .PHONY: setup
-setup: install-tools git-setup
+setup: install-tools git-setup go-install
 
 # 設定ファイルを取得してgit管理下に配置する
 .PHONY: get-conf
@@ -42,14 +42,20 @@ install-tools:
 	sudo apt upgrade
 	sudo apt install -y git
 
+.PHONY: go-install
+go-install:
 	# Goのインストール
 	wget https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
 	sudo rm -rf /home/isucon/local/go
+	mkdir -p /home/isucon/local
 	tar -C /home/isucon/local -xzf go1.23.2.linux-amd64.tar.gz
+	export PATH=$PATH:/home/isucon/local/go/bin
+	echo "export PATH=$PATH:/home/isucon/local/go/bin" >> ~/.bashrc
 
 	# alpとslpのインストール
 	go install github.com/tkuchiki/alp/cmd/alp@latest
 	go install github.com/tkuchiki/slp/cmd/slp@latest
+	echo "export PATH=$PATH:/home/isucon/go/bin" >> ~/.bashrc
 
 	# pproteinのインストール
 	wget https://github.com/kaz/pprotein/releases/download/v1.2.3/pprotein_1.2.3_linux_amd64.tar.gz
