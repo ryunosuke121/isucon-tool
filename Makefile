@@ -5,17 +5,18 @@ include env.sh
 
 # 問題によって変わる変数
 USER:=isucon
+# バイナリファイルの名前
 BIN_NAME:=isucondition
 BUILD_DIR:=/home/isucon/webapp/go
 CMD_MAINGO:=main.go
-SERVICE_NAME:=$(BIN_NAME).go.service
+SERVICE_NAME:=isupipe-go.service
 
 DB_PATH:=/etc/mysql
 NGINX_PATH:=/etc/nginx
 SYSTEMD_PATH:=/etc/systemd/system
 
 NGINX_LOG:=/var/log/nginx/access.log
-DB_SLOW_LOG:=/var/log/mysql/mariadb-slow.log
+DB_SLOW_LOG:=/var/log/mysql/mysql-slow.log
 
 # メインで使うコマンド ------------------------
 
@@ -49,7 +50,7 @@ go-install:
 	sudo rm -rf /home/isucon/local/go
 	mkdir -p /home/isucon/local
 	tar -C /home/isucon/local -xzf go1.23.2.linux-amd64.tar.gz
-	export PATH=$PATH:/home/isucon/local/go/bin
+	export PATH=$$PATH:/home/isucon/local/go/bin
 	echo "export PATH=$PATH:/home/isucon/local/go/bin" >> ~/.bashrc
 
 	# alpとslpのインストール
