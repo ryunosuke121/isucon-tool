@@ -1,0 +1,13 @@
+	/go/
+	rust/
+    nodejs/
+    python/
+    php/
+    ruby/
+    perl/
+    .cache/
+    local/
+    rustup/
+    .perl-cpm/
+    .cpanm/
+    .npm/

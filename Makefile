@@ -92,21 +92,25 @@ set-as-s3:
 
 .PHONY: get-db-conf
 get-db-conf:
+	mkdir -p ~/$(SERVER_ID)/etc/mysql
 	sudo cp -R $(DB_PATH)/* ~/$(SERVER_ID)/etc/mysql
 	sudo chown $(USER) -R ~/$(SERVER_ID)/etc/mysql
 
 .PHONY: get-nginx-conf
 get-nginx-conf:
+	mkdir -p ~/$(SERVER_ID)/etc/nginx
 	sudo cp -R $(NGINX_PATH)/* ~/$(SERVER_ID)/etc/nginx
 	sudo chown $(USER) -R ~/$(SERVER_ID)/etc/nginx
 
 .PHONY: get-service-file
 get-service-file:
+	mkdir -p ~/$(SERVER_ID)/etc/systemd/system
 	sudo cp $(SYSTEMD_PATH)/$(SERVICE_NAME) ~/$(SERVER_ID)/etc/systemd/system/$(SERVICE_NAME)
 	sudo chown $(USER) ~/$(SERVER_ID)/etc/systemd/system/$(SERVICE_NAME)
 
 .PHONY: get-envsh
 get-envsh:
+	mkdir -p ~/$(SERVER_ID)/home/isucon
 	cp ~/env.sh ~/$(SERVER_ID)/home/isucon/env.sh
 
 .PHONY: deploy-db-conf
