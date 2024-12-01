@@ -51,12 +51,12 @@ go-install:
 	mkdir -p /home/isucon/local
 	tar -C /home/isucon/local -xzf go1.23.2.linux-amd64.tar.gz
 	export PATH=$$PATH:/home/isucon/local/go/bin
-	echo "export PATH=\$PATH:/home/isucon/local/go/bin" >> ~/.bashrc
+	echo 'export PATH=$$PATH:/home/isucon/local/go/bin' >> ~/.bashrc
 
 	# alpとslpのインストール
 	/home/isucon/local/go/bin/go install github.com/tkuchiki/alp/cmd/alp@latest
 	/home/isucon/local/go/bin/go install github.com/tkuchiki/slp/cmd/slp@latest
-	echo "export PATH=\$PATH:/home/isucon/go/bin" >> ~/.bashrc
+	echo 'export PATH=$$PATH:/home/isucon/go/bin' >> ~/.bashrc
 
 	# pproteinのインストール
 	wget https://github.com/kaz/pprotein/releases/download/v1.2.3/pprotein_1.2.3_linux_amd64.tar.gz
