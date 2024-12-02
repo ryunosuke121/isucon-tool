@@ -138,7 +138,6 @@ build:
 restart:
 	sudo systemctl daemon-reload
 	sudo systemctl restart $(SERVICE_NAME)
-	sudo systemctl restart mysql
 	sudo systemctl restart nginx
 
 
