@@ -1,4 +1,4 @@
-include env.sh
+minclude env.sh
 # 変数定義 ------------------------
 
 # SERVER_ID: env.sh内で定義
@@ -22,7 +22,7 @@ DB_SLOW_LOG:=/var/log/mysql/mysql-slow.log
 
 # サーバーの環境構築　ツールのインストール、gitまわりのセットアップ
 .PHONY: setup
-setup: install-tools git-setup go-install
+setup: l git-setup go-install
 
 # 設定ファイルを取得してgit管理下に配置する
 .PHONY: get-conf
@@ -47,6 +47,7 @@ install-tools:
 go-install:
 	# Goのインストール
 	wget https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
+	# wget https://go.dev/dl/go1.23.4.linux-arm64.tar.gz
 	sudo rm -rf /home/isucon/local/go
 	mkdir -p /home/isucon/local
 	tar -C /home/isucon/local -xzf go1.23.2.linux-amd64.tar.gz
@@ -60,6 +61,7 @@ go-install:
 
 	# pproteinのインストール
 	wget https://github.com/kaz/pprotein/releases/download/v1.2.3/pprotein_1.2.3_linux_amd64.tar.gz
+	# wget https://github.com/kaz/pprotein/releases/download/v1.2.4/pprotein_1.2.4_linux_arm64.tar.gz
 	tar -xzf pprotein_1.2.3_linux_amd64.tar.gz
 
 .PHONY: git-setup
